@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/confusion-beta/precache-manifest.233a3d91a65302c7b5a89a6bce9b516e.js"
+  "/confusion-beta/precache-manifest.22235069e55a8efb48839513befa90a1.js"
 );
 
 self.addEventListener('message', (event) => {
