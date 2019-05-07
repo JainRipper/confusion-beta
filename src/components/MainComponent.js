@@ -14,7 +14,8 @@ const mapStateToProps = state => {
     dishes: state.dishes,
     comments: state.comments,
     promotions: state.promotions,
-    leaders: state.leaders
+    leaders: state.leaders,
+    url: state.url
   }    
 }
 
@@ -33,6 +34,7 @@ class Main extends Component {    // states from 'mapStateToProps' pass through 
           <Home dish={this.props.dishes.filter((dish) => dish.featured)[0]}
             promotion={this.props.promotions.filter((promo) => promo.featured)[0]}
             leader={this.props.leaders.filter((leader) => leader.featured)[0]}
+            url={this.props.url}
           />
       );
     }
@@ -41,6 +43,7 @@ class Main extends Component {    // states from 'mapStateToProps' pass through 
       return(
         <DishDetail dish={this.props.dishes.filter((dish) => dish.id === parseInt(match.params.dishId, 10))[0]}
           comments={this.props.comments.filter((comment) => comment.dishId === parseInt(match.params.dishId, 10))}
+          url={this.props.url}
         />
       );
     }
@@ -50,8 +53,8 @@ class Main extends Component {    // states from 'mapStateToProps' pass through 
         <Header />
         <Switch>
           <Route path="/home" component={HomePage} />
-          <Route exact path="/aboutus" component={() => <About leaders={this.props.leaders} />} />
-          <Route exact path="/menu" component={() => <Menu dishes={this.props.dishes} />} />
+          <Route exact path="/aboutus" component={() => <About leaders={this.props.leaders} url={this.props.url}/>} />
+          <Route exact path="/menu" component={() => <Menu dishes={this.props.dishes} url={this.props.url}/>} />
           <Route path="/menu/:dishId" component={DishWithId} />
           <Route exact path="/contactus" component={Contact} />
           <Redirect to="/home" />

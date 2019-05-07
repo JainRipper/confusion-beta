@@ -2,11 +2,11 @@ import React from 'react';
 import { Card, CardImg, CardImgOverlay, CardTitle, Breadcrumb, BreadcrumbItem } from 'reactstrap';
 import { Link } from 'react-router-dom';
 
-    function RenderMenuItem({ dish }) {
+    function RenderMenuItem({ dish, url }) {
         return (
             <Card>
                 <Link to={`/menu/${dish.id}`}>
-                    <CardImg width="100%" src={dish.image} alt={dish.name} />
+                    <CardImg width="100%" src={url + dish.image} alt={dish.name} />
                     <CardImgOverlay>
                         <CardTitle>{dish.name}</CardTitle>
                     </CardImgOverlay>
@@ -20,7 +20,7 @@ import { Link } from 'react-router-dom';
         const menu = props.dishes.map((dish) => {
             return (
                 <div key={dish.id} className="col-12 col-md-5 m-1">
-                    <RenderMenuItem dish={dish} />
+                    <RenderMenuItem dish={dish} url={props.url}/>
                 </div>
             );
         });

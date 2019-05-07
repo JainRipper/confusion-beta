@@ -9,11 +9,11 @@ const maxLength = (len) => (val) => !(val) || (val.length <= len);
 const minLength = (len) => (val) => (val) && (val.length >= len);
 const isNumber = (val) => !isNaN(Number(val));
 
-    function RenderDish({dish}) {
+    function RenderDish({dish, url}) {
         return(
             <div className="col-12 col-md-5 m-1">
                 <Card>
-                    <CardImg width="100%" src={dish.image} alt={dish.name} />
+                    <CardImg width="100%" src={url + dish.image} alt={dish.name} />
                     <CardBody>
                         <CardTitle>{dish.name}</CardTitle>
                         <CardText>{dish.description}</CardText>
@@ -75,7 +75,7 @@ const isNumber = (val) => !isNaN(Number(val));
                     </div>
                 </div>
                 <div className="row">
-                    <RenderDish dish={props.dish} />                    
+                    <RenderDish dish={props.dish} url={props.url}/>                    
                     <RenderComments comments={props.comments} />
                 </div>
             </div>
